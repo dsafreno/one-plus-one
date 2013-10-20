@@ -1,5 +1,9 @@
 <div class="container">
   <h1>All People</h1>
+  <div class="row">
+    <div class="col-xs-6"><h3>Name</h3></div>
+    <div class="col-xs-6"><h3>Email</h3></div>
+  </div>
   <div class="container" data-bind="foreach: people">
     <div class="row">
       <div class="col-xs-6" data-bind="text:name"></div>
@@ -10,9 +14,6 @@
 <div class="container" data-bind="foreach: teams">
   <h1 data-bind="text: name"></h1>
   <div class="container" data-bind="foreach: people">
-    <div class="row">
-      <div class="col-xs-6" data-bind="text:name"></div>
-      <div class="col-xs-6" data-bind="text:email"></div>
-    </div>
+    <div class="col-s-6 col-md-4" data-bind="text:listing"></div>
   </div>
 </div>

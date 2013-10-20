@@ -1,6 +1,10 @@
 class Person
   constructor: ({@name, @email}) ->
-    # Noop
+    self = @
+    @listing = ko.computed(->
+      return "#{self.name} (#{self.email})"
+    )
+
 
 class Team
   constructor: ({@id, @name}) ->
