@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Team do
-  before { @team = Team.new(name: 'Engineering') }
+  before do
+    @existing_team = Team.create(name: 'QE')
+    @team = Team.new(name: 'UX')
+  end
 
   subject { @team }
 
@@ -11,6 +14,11 @@ describe Team do
 
   describe 'when name is not present' do
     before { @team.name = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'when name is not unique' do
+    before { @team.name = @existing_team.name }
     it { should_not be_valid }
   end
 end

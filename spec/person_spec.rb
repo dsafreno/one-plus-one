@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Person do
-  before { @person = Person.new(name: 'Doug', email: 'dsafreno@somesite.com') }
+  before do
+    @existing_person = Person.create(name: 'Sam', email: 'sam@somesite.com')
+    @person = Person.new(name: 'Doug', email: 'dsafreno@somesite.com')
+  end
   subject { @person }
 
   it { should respond_to(:name) }
@@ -23,6 +26,11 @@ describe Person do
 
   describe 'when email is not properly formatted' do
     before { @person.email = 'dsafreno%somesite.com' }
+    it { should_not be_valid }
+  end
+
+  describe 'when email is nonunique' do
+    before { @person.email = @existing_person.email }
     it { should_not be_valid }
   end
 end
