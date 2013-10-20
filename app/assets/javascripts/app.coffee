@@ -12,8 +12,15 @@ class Team
       )
     )
 
-class TeamsViewModel
+class AppViewModel
   constructor: ->
+    @people = ko.observableArray()
+    people = @people
+    $.get('/people').done((data) ->
+      _.each(data, (datum) ->
+        people.push(new Person(datum))
+      )
+    )
     @teams = ko.observableArray()
     teams = @teams
     $.get('/teams').done((data) ->
@@ -23,6 +30,6 @@ class TeamsViewModel
     )
 
 $ ->
-  teams = new TeamsViewModel()
-  ko.applyBindings(teams)
+  app = new AppViewModel()
+  ko.applyBindings(app)
 
