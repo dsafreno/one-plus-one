@@ -1,0 +1,9 @@
+<div class="container" data-bind="foreach: teams">
+  <h1 data-bind="text: name"></h1>
+  <div class="container" data-bind="foreach: people">
+    <div class="row">
+      <div class="col-xs-6" data-bind="text:name"></div>
+      <div class="col-xs-6" data-bind="text:email"></div>
+    </div>
+  </div>
+</div>
