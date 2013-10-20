@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Person do
-  before { @person = Person.new(name: 'Doug', email: 'something@something.com') }
+  before { @person = Person.new(name: 'Doug', email: 'dsafreno@somesite.com') }
   subject { @person }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+  it { should respond_to(:teams) }
+  it { should respond_to(:pairings) }
 
   it { should be_valid }
 
