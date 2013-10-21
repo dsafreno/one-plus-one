@@ -1,20 +1,97 @@
+$logo-color:  #f40;
+$dark-logo-color:  #d30;
+$inactive-color: #3cf;
+$active-color: black;
+
+body, .container {
+  font-family: 'Open Sans', serif;
+  font-size: 16px;
+}
+
+h1, h2, h3,  {
+  font-family: 'Rokkitt', serif;
+}
+
+.title {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+  background-color: $logo-color;
+  color: white;
+  margin: 12px 0 12px 0;
+  padding: 0;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  font-size: 60px;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+}
+
+h2 {
+  font-size: 35px;
+  margin: 0;
+}
+
 h3 {
   padding-left: 10px;
 }
 
-.jumbotron {
-  margin-bottom:0;
+.center {
+  text-align: center;
 }
 
-.clickable-heading {
-  border-top: 1px solid white;
-  h1 {
-    margin: 0;
-  }
+.row.heading {
+  border-bottom: 3px solid $inactive-color;
+}
+
+.jumbotron {
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin:0;
-  padding: 10px;
+  background-color: white;
+}
+
+.btn {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.mini {
+  text-align:center;
+  vertical-align:middle;
+  width:30px;
+  height: 30px;
+}
+
+.major-heading {
+  position: relative;
+  height: 50px;
+  margin:0;
+  padding: 10px 0 5px 0;
   color: white;
-  background-color: black;
+  background-color: $inactive-color;
+  .edit {
+    position: absolute;
+    right:60px;
+    top:8px;
+    width:90px;
+  }
+
+  h1 {
+    position: absolute;
+    width: 100%;
+    text-align:center;
+  }
+}
+
+.minor-heading {
+  border-bottom: 3px solid $inactive-color;
+  margin:0;
+  padding: 4px 0 1px 0px ;
 }
 
 input {
@@ -22,4 +99,39 @@ input {
 }
 button {
   width: 100%;
+}
+
+.new-person {
+  margin-top: 5px;
+}
+
+// Orange button
+.btn-orange {
+  background-color: #f40;
+  border-color: #f40;
+  color: white;
+}
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active,
+.btn-orange.active {
+  background-color: #e63d00;
+  border-color: #cc3600;
+  color: white;
+}
+.btn-orange.disabled:hover,
+.btn-orange.disabled:focus,
+.btn-orange.disabled:active,
+.btn-orange.disabled.active,
+.btn-orange[disabled]:hover,
+.btn-orange[disabled]:focus,
+.btn-orange[disabled]:active,
+.btn-orange[disabled].active,
+fieldset[disabled] .btn-orange:hover,
+fieldset[disabled] .btn-orange:focus,
+fieldset[disabled] .btn-orange:active,
+fieldset[disabled] .btn-orange.active {
+  background-color: #f40;
+  border-color: #f40;
+  color: white;
 }

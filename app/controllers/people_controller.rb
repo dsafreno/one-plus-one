@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def create
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
     if @person.save
       render json: @person
     else
@@ -13,7 +13,12 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    @person = Person.find(params[:person])
-    @person.destroy
+    @person = Person.find(params[:id])
+    render json: @person.destroy
+  end
+
+  private
+  def person_params
+    params.require(:person).permit(:id, :name, :email)
   end
 end

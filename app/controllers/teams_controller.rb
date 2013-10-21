@@ -25,6 +25,7 @@ class TeamsController < ApplicationController
 
   def remove
     @team = Team.find(params[:id])
+    @person = Person.find(params[:person_id])
     @team.people -= [@person]
   end
 

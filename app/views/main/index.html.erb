@@ -1,36 +1,50 @@
-<div class="clickable-heading">
-  <h1>All People</h1>
+<div class="title center">
+  <h1>1+1</h1>
+</div>
+<div class="major-heading center">
+  <div class="heading-text">
+    <h2>People</h2>
+  </div>
+  <button type="button" class="btn edit btn-orange" data-bind="click: togglePeopleEdit">Edit</button>
 </div>
 <div class="jumbotron">
-  <div class="row">
-    <div class="col-xs-6"><h3>Name</h3></div>
-    <div class="col-xs-6"><h3>Email</h3></div>
+  <div class="container">
+    <div class="row heading">
+      <div class="col-xs-6"><h2>Name</h2></div>
+      <div class="col-xs-6"><h2>Email</h2></div>
+    </div>
   </div>
-  <div class="container" data-bind="foreach: people">
+  <div class="container">
+    <div class="row new-person" data-bind="visible: peopleEdit">
+      <div class="col-xs-6">
+        <input class="form-control" data-bind="value: newName" type="text" placeholder="John Smith"/>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <input class="form-control" data-bind="value: newEmail" type="text" placeholder="jsmith@somesite.com"/>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" data-bind="click: createPerson" class="btn btn-orange btn-block mini">+</button>
+      </div>
+    </div>
+    <!-- ko foreach: people -->
     <div class="row">
       <div class="col-xs-6" data-bind="text:name"></div>
-      <div class="col-xs-6" data-bind="text:email"></div>
+      <div class="col-xs-4" data-bind="text:email"></div>
+      <div class="col-sm-2" data-bind="visible: $parent.peopleEdit">
+        <button type="button" data-bind="click: $parent.deletePerson" class="btn btn-orange btn-block mini">-</button>
+      </div>
     </div>
-  </div>
-  <div class="row new-person">
-    <div class="col-xs-6">
-      <input class="name form-control" type="text" placeholder="John Smith"/>
-    </div>
-    <div class="col-xs-6 col-sm-4">
-      <input class="email form-control" type="text" placeholder="jsmith@somesite.com"/>
-    </div>
-    <div class="col-sm-2">
-      <button type="button" class="btn btn-default btn-block">Add</button>
-    </div>
+    <!-- /ko -->
   </div>
 </div>
 
 
+<div class="major-heading center"><h2>Teams</h2></div>
 <!-- ko foreach: teams -->
-<div class="clickable-heading">
-  <h1 data-bind="text: name"></h1>
-</div>
 <div class="jumbotron">
+  <div class="container">
+    <div class="minor-heading row"><div class="col-xs-12"><h2 data-bind="text: name"></h2></div></div>
+  </div>
   <div class="container" data-bind="foreach: people">
     <div class="col-sm-6 col-md-4" data-bind="text:listing"></div>
   </div>
