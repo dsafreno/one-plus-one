@@ -8,6 +8,7 @@ class Person
 class Team
   constructor: ({@id, @name}) ->
     @people = ko.observableArray()
+    @edit = ko.observable(false)
     people = @people
     $.get("/teams/#{@id}/people").done((data) ->
       _.each(data, (datum) ->
@@ -31,7 +32,9 @@ class AppViewModel
   constructor: ->
     @newName = ko.observable('')
     @newEmail = ko.observable('')
-    @peopleEdit = ko.observable(true)
+    @newTeamName = ko.observable('')
+    @peopleEdit = ko.observable(false)
+    @teamAdd = ko.observable(false)
     @people = ko.observableArray()
     @reloadData()
 
@@ -62,6 +65,9 @@ class AppViewModel
     )
     @newName('')
     @newEmail('')
+
+  toggleTeamAdd: =>
+    @teamAdd(!@teamAdd())
 
   deletePerson: (person) =>
     reloadData = @reloadData

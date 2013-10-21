@@ -28,22 +28,42 @@
     </div>
     <!-- ko foreach: people -->
     <div class="row">
-      <div class="col-xs-6" data-bind="text:name"></div>
-      <div class="col-xs-4" data-bind="text:email"></div>
-      <div class="col-sm-2" data-bind="visible: $parent.peopleEdit">
-        <button type="button" data-bind="click: $parent.deletePerson" class="btn btn-orange btn-block mini">-</button>
+      <div class="col-xs-6">
+        <button type="button" data-bind="click: $parent.deletePerson, visible: $parent.peopleEdit" class="btn left-btn btn-orange btn-block mini">-</button>
+        <div data-bind="text:name"></div>
       </div>
+      <div class="col-xs-6" data-bind="text:email"></div>
     </div>
     <!-- /ko -->
   </div>
 </div>
 
 
-<div class="major-heading center"><h2>Teams</h2></div>
+<div class="major-heading center">
+  <div class="heading-text">
+    <h2>Teams</h2>
+  </div>
+  <button type="button" class="btn edit btn-orange" data-bind="click: toggleTeamAdd">Add</button>
+</div>
+<div class="container">
+  <div class="row new-team" data-bind="visible: teamAdd">
+    <div class="col-xs-10">
+      <input class="form-control" data-bind="value: newTeamName" type="text" placeholder="Engineering"/>
+    </div>
+    <div class="col-xs-2">
+      <button type="button" class="btn btn-orange btn-block mini">+</button>
+    </div>
+  </div>
+</div>
 <!-- ko foreach: teams -->
 <div class="jumbotron">
   <div class="container">
-    <div class="minor-heading row"><div class="col-xs-12"><h2 data-bind="text: name"></h2></div></div>
+    <div class="minor-heading row">
+      <div class="col-xs-10"><h2 data-bind="text: name"></h2></div>
+      <div class="col-xs-2">
+        <button type="button" class="btn edit btn-orange btn-block">Edit</button>
+      </div>
+    </div>
   </div>
   <div class="container" data-bind="foreach: people">
     <div class="col-sm-6 col-md-4" data-bind="text:listing"></div>
