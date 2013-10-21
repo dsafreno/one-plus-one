@@ -9,26 +9,44 @@ class Team
   constructor: ({@id, @name}) ->
     @people = ko.observableArray()
     @edit = ko.observable(false)
+    @newMember = ko.observable()
+    newMember = @newMember
     people = @people
     $.get("/teams/#{@id}/people").done((data) ->
       _.each(data, (datum) ->
         people.push(new Person(datum))
       )
     )
+    @options = ko.observableArray()
+    options = @options
+    $.get("/teams/#{@id}/options").done((data) ->
+      _.each(data, (datum) ->
+        options.push(new Person(datum))
+      )
+      newMember(options()[0])
+    )
 
   toggleEdit: =>
     @edit(!@edit())
 
-  add: (person) =>
+  add: =>
     people = @people
-    $.post("teams/#{@id}/add", { person_id: person.id }).success(->
-      people.push(person)
+    options = @options
+    newMember = @newMember
+    $.post("teams/#{@id}/add", { person_id: @newMember().id }).success((datum) ->
+      newPerson = new Person(datum)
+      people.push(newPerson)
+      options.remove(newPerson)
+      newMember(options()[0])
     )
 
   remove: (person) =>
     people = @people
-    $.post("teams/#{@id}/remove", { person_id: person.id }).success(->
-      people.remove(person)
+    options = @options
+    $.post("teams/#{@id}/remove", { person_id: person.id }).success((datum)->
+      oldPerson = new Person(datum)
+      people.remove(oldPerson)
+      options.push(oldPerson)
     )
 
 class AppViewModel
@@ -39,6 +57,7 @@ class AppViewModel
     @peopleEdit = ko.observable(false)
     @teamAdd = ko.observable(false)
     @people = ko.observableArray()
+    @teams = ko.observableArray()
     @reloadData()
 
   reloadData: =>
@@ -49,7 +68,6 @@ class AppViewModel
         people.push(new Person(datum))
       )
     )
-    @teams = ko.observableArray()
     teams = @teams
     $.get('/teams').success((data) ->
       teams.removeAll()

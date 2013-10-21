@@ -2,6 +2,7 @@ OnePlusOne::Application.routes.draw do
   resources :teams, only: [:index, :create, :destroy] do
     member do
       get 'people'
+      get 'options'
       post 'add'
       post 'remove'
     end

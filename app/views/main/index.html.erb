@@ -68,8 +68,17 @@
       </div>
     </div>
   </div>
+  <div class="container newMember" data-bind="visible: edit">
+    <div class="col-sm-6 col-md-4">
+      <button type="button" class="btn btn-orange left btn-block mini" data-bind="click: add">+</button>
+      <select data-bind="options: options, value: newMember, optionsText: 'listing'"></select>
+    </div>
+  </div>
   <div class="container" data-bind="foreach: people">
-    <div class="col-sm-6 col-md-4" data-bind="text:listing"></div>
+    <div class="col-sm-6 col-md-4">
+      <button type="button" data-bind="click: $parent.remove, visible: $parent.edit" class="btn left-btn btn-orange btn-block mini">-</button>
+      <div data-bind="text:listing"></div>
+    </div>
   </div>
 </div>
 <!-- /ko -->
