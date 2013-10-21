@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new(team_params)
     if @team.save
       render json: @team
     else
@@ -21,16 +21,23 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @person = Person.find(params[:person_id])
     @team.people += [@person]
+    render json: @team.people
   end
 
   def remove
     @team = Team.find(params[:id])
     @person = Person.find(params[:person_id])
     @team.people -= [@person]
+    render json: @team.people
   end
 
   def destroy
     @team = Team.find(params[:id])
-    @team.destroy
+    render json: @team.destroy
+  end
+
+  private
+  def team_params
+    params.require(:team).permit(:id, :name)
   end
 end

@@ -16,6 +16,9 @@ class Team
       )
     )
 
+  toggleEdit: =>
+    @edit(!@edit())
+
   add: (person) =>
     people = @people
     $.post("teams/#{@id}/add", { person_id: person.id }).success(->
@@ -58,10 +61,17 @@ class AppViewModel
   togglePeopleEdit: =>
     @peopleEdit(!@peopleEdit())
 
+  createTeam: =>
+    teams = @teams
+    $.post("/teams", { team: {name: @newTeamName}}).success((datum) ->
+      teams.unshift(new Team(datum))
+    )
+    @newTeamName('')
+
   createPerson: =>
     people = @people
     $.post("/people", { person: {name: @newName, email: @newEmail} }).success((datum) ->
-      people.push(new Person(datum))
+      people.unshift(new Person(datum))
     )
     @newName('')
     @newEmail('')
@@ -75,6 +85,16 @@ class AppViewModel
     $.ajax({
       type: "DELETE"
       url: "/people/#{person.id}"
+    }).success(->
+      reloadData()
+    )
+
+  deleteTeam: (team) =>
+    reloadData = @reloadData
+    teams = @teams
+    $.ajax({
+      type: "DELETE"
+      url: "/teams/#{team.id}"
     }).success(->
       reloadData()
     )

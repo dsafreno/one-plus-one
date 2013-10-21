@@ -38,7 +38,6 @@
   </div>
 </div>
 
-
 <div class="major-heading center">
   <div class="heading-text">
     <h2>Teams</h2>
@@ -51,17 +50,21 @@
       <input class="form-control" data-bind="value: newTeamName" type="text" placeholder="Engineering"/>
     </div>
     <div class="col-xs-2">
-      <button type="button" class="btn btn-orange btn-block mini">+</button>
+      <button type="button" class="btn btn-orange btn-block mini" data-bind="click: createTeam">+</button>
     </div>
   </div>
 </div>
+
 <!-- ko foreach: teams -->
 <div class="jumbotron">
   <div class="container">
     <div class="minor-heading row">
-      <div class="col-xs-10"><h2 data-bind="text: name"></h2></div>
+      <div class="col-xs-10">
+        <button type="button" data-bind="click: $parent.deleteTeam, visible: edit" class="btn left-btn btn-orange btn-block mini">-</button>
+        <h2 data-bind="text: name"></h2>
+      </div>
       <div class="col-xs-2">
-        <button type="button" class="btn edit btn-orange btn-block">Edit</button>
+        <button type="button" class="btn edit btn-orange btn-block" data-bind="click: toggleEdit">Edit</button>
       </div>
     </div>
   </div>
