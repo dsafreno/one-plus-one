@@ -72,7 +72,7 @@
       </div>
     </div>
   </div>
-  <div class="container newMember" data-bind="visible: $root.teamsEdit">
+  <div class="container newMember" data-bind="visible: $root.teamsEdit() && options().length > 0">
     <div class="col-sm-6 col-md-4">
       <button type="button" class="btn btn-orange left-btn btn-block mini" data-bind="click: add"><span class="glyphicon glyphicon-plus"></span></button>
       <div>
