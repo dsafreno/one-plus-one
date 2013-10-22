@@ -1,8 +1,8 @@
 # 1+1
----
+-------------------------
 
 ## Instructions
----
+-------------------------
 Note that you can easily test the app by visiting http://oneplusoneifttt.herokuapp.com/
 
 ### Local Setup
@@ -22,7 +22,7 @@ This will ensure that the **make_pairings** rake task is run when the day of the
 I hope this is intuitive. Hit the edit buttons to edit people/teams, use the + and x buttons to respectively create and delete people/teams, and use the dropdown with + button to add people to teams.
 
 ## Design Decisions
----
+-------------------------
 
 ### Technologies
 
@@ -44,7 +44,7 @@ I tested the backend using rspec. I especially tested database validations and t
 I ended up not testing the frontend because of the application's size. As per my TODO below, I would eventually learn the idiomatic way to test knockout js apps and then write the appropriate tests for the front end.
 
 ## TODOs
----
+-------------------------
 
 - Create an Error UI. Errors currently fail without notifying the user.
 - Learn idoms for testing Knockout JS and implement them.
