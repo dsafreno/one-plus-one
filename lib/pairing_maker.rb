@@ -45,7 +45,7 @@ module PairingMaker
 
   def PairingMaker.compute_week
     newest = Pairing.order("week DESC").first
-    newest.week ? newest.week + 1 : 0
+    (newest and newest.week) ? newest.week + 1 : 0
   end
 
   def PairingMaker.compute_happinesses(week)
