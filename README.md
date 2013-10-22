@@ -45,9 +45,9 @@ I ended up not testing the frontend because of the application's size. As per my
 
 ## TODOs
 -------------------------
-
 - Create an Error UI. Bad inputs currently fail without notifying the user as to what happened.
 - Loading notification for UI while waiting for server response.
 - Fix CSS issues: teams table slightly thinner then people table, + x buttons are slightly off center.
 - Learn idoms for testing Knockout JS and implement them.
+- Test controllers/mailers.
 - Blossom V algorithm for maximizing happiness.
