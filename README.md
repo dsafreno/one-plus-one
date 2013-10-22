@@ -1,8 +1,8 @@
 # 1+1
-===
+---
 
 ## Instructions
-===
+---
 Note that you can easily test the app by visiting http://oneplusoneifttt.herokuapp.com/
 
 ### Local Setup
@@ -13,7 +13,7 @@ Ensure you have the correct versions of rails (rails 4.0.0) and ruby (2.0.0). Cl
 
 Deploy 1+1 to a Heroku cedar stack. Add the Scheduler (https://devcenter.heroku.com/articles/scheduler) and the SendGrid (https://devcenter.heroku.com/articles/sendgrid) plugins. From the Heroku Dashboard, navigate to the dashboard for Scheduler and add the following for every day at 5:00 pm:
 
-    test `date +%w\` -eq 5 && rake make_pairings`
+    test `date +%w` -eq 5 && rake make_pairings`
 
 This will ensure that the **make_pairings** rake task is run when the day of the week is Friday at 5:00 pm. 
 
@@ -22,7 +22,7 @@ This will ensure that the **make_pairings** rake task is run when the day of the
 I hope this is intuitive. Hit the edit buttons to edit people/teams, use the + and x buttons to respectively create and delete people/teams, and use the dropdown with + button to add people to teams.
 
 ## Design Decisions
-===
+---
 
 ### Technologies
 
@@ -44,7 +44,7 @@ I tested the backend using rspec. I especially tested database validations and t
 I ended up not testing the frontend because of the application's size. As per my TODO below, I would eventually learn the idiomatic way to test knockout js apps and then write the appropriate tests for the front end.
 
 ## TODOs
-===
+---
 
 - Create an Error UI. Errors currently fail without notifying the user.
 - Learn idoms for testing Knockout JS and implement them.
