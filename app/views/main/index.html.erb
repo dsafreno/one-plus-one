@@ -23,13 +23,13 @@
         <input class="form-control" data-bind="value: newEmail" type="text" placeholder="jsmith@somesite.com"/>
       </div>
       <div class="col-sm-2">
-        <button type="button" data-bind="click: createPerson" class="btn btn-orange btn-block mini">+</button>
+        <button type="button" data-bind="click: createPerson" class="btn btn-orange btn-block mini"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
     </div>
     <!-- ko foreach: people -->
     <div class="row">
       <div class="col-xs-6">
-        <button type="button" data-bind="click: $parent.deletePerson, visible: $parent.peopleEdit" class="btn left-btn btn-orange btn-block mini">-</button>
+        <button type="button" data-bind="click: $parent.deletePerson, visible: $parent.peopleEdit" class="btn left-btn btn-orange btn-block mini"><span class="glyphicon glyphicon-remove"></span></button>
         <div data-bind="text:name"></div>
       </div>
       <div class="col-xs-6" data-bind="text:email"></div>
@@ -50,7 +50,7 @@
       <input class="form-control" data-bind="value: newTeamName" type="text" placeholder="Engineering"/>
     </div>
     <div class="col-xs-2">
-      <button type="button" class="btn btn-orange btn-block mini" data-bind="click: createTeam">+</button>
+      <button type="button" class="btn btn-orange btn-block mini" data-bind="click: createTeam"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
   </div>
 </div>
@@ -60,7 +60,7 @@
   <div class="container">
     <div class="minor-heading row">
       <div class="col-xs-10">
-        <button type="button" data-bind="click: $parent.deleteTeam, visible: edit" class="btn left-btn btn-orange btn-block mini">-</button>
+        <button type="button" data-bind="click: $parent.deleteTeam, visible: edit" class="btn left-btn btn-orange btn-block mini"><span class="glyphicon glyphicon-remove"></span></button>
         <h2 data-bind="text: name"></h2>
       </div>
       <div class="col-xs-2">
@@ -70,13 +70,15 @@
   </div>
   <div class="container newMember" data-bind="visible: edit">
     <div class="col-sm-6 col-md-4">
-      <button type="button" class="btn btn-orange left btn-block mini" data-bind="click: add">+</button>
-      <select data-bind="options: options, value: newMember, optionsText: 'listing'"></select>
+      <button type="button" class="btn btn-orange left-btn btn-block mini" data-bind="click: add"><span class="glyphicon glyphicon-plus"></span></button>
+      <div>
+        <select data-bind="options: options, value: newMember, optionsText: 'listing'"></select>
+      </div>
     </div>
   </div>
   <div class="container" data-bind="foreach: people">
     <div class="col-sm-6 col-md-4">
-      <button type="button" data-bind="click: $parent.remove, visible: $parent.edit" class="btn left-btn btn-orange btn-block mini">-</button>
+      <button type="button" data-bind="click: $parent.remove, visible: $parent.edit" class="btn left-btn btn-orange btn-block mini"><span class="glyphicon glyphicon-remove"></span></button>
       <div data-bind="text:listing"></div>
     </div>
   </div>
