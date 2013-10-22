@@ -6,7 +6,11 @@ module PairingMaker
   end
 
   def PairingMaker.save_and_mail(pairings)
-    pairings.each { |p| p.save }
+    pairings.each do |p|
+      p.save
+      PersonMailer.pairing_email(p.first_person, p.second_person).deliver
+      PersonMailer.pairing_email(p.second_person, p.first_person).deliver
+    end
   end
 
   def PairingMaker.find_pairings_for(week)
