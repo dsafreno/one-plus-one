@@ -32,7 +32,7 @@ class Team
   add: =>
     people = @people
     options = @options
-    newMember = @newMember
+    newMember = @newMember()
     $.post("teams/#{@id}/add", { person_id: @newMember().id }).success((datum) ->
       newPerson = new Person(datum)
       people.push(newPerson)

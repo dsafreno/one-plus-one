@@ -36,7 +36,7 @@ I designed the UX to mock IFTTT's color scheme because it is designed to be the 
 
 I chose to use an algorithm that attempts to ensure that as few people have poor week-over-week matchups as possible. I calculate each person's "happiness" based on a weighted average of the "happiness" of each of their previous matchups. Then, I choose the optimal matchup for the each person from least happy to most happy. Note that this does not guarantee that everyone has a matchup (this is impossible), nor that everyone is matched with each other person with equal frequency, nor that they will not be paired with the same person week over week. It does not even guarantee that happiness is maximized.
 
-Had I more time to understand and implement a better algorithm, I would have instead reduced it to a weighted undirected graph problem in which the nodes are people, edges are to people on the same team, and weights are determined as "happiness" of the matchup as above. Then, I would've maximized happiness by solving it as a Maximum Weighted Matching problem (see http://jorisvr.nl/maximummatching.html#ref4) using the Blossom V algorithm, which would have guaranteed maximum happiness.
+Had I more time to understand and implement a better algorithm, I would have instead reduced it to a weighted undirected graph problem in which the nodes are people, edges are to people on the same team, and weights are determined as "happiness" of the matchup as above. Then, I would've maximized happiness by solving it as a Maximum Weighted Matching problem (see http://jorisvr.nl/maximummatching.html) using the Blossom V algorithm (see http://pub.ist.ac.at/~vnk/papers/blossom5.pdf), which would have guaranteed maximum happiness.
 
 ### Testing
 
@@ -46,6 +46,8 @@ I ended up not testing the frontend because of the application's size. As per my
 ## TODOs
 -------------------------
 
-- Create an Error UI. Errors currently fail without notifying the user.
+- Create an Error UI. Bad inputs currently fail without notifying the user as to what happened.
+- Loading notification for UI while waiting for server response.
+- Fix CSS issues: teams table slightly thinner then people table, + x buttons are slightly off center.
 - Learn idoms for testing Knockout JS and implement them.
 - Blossom V algorithm for maximizing happiness.
